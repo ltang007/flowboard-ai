@@ -20,7 +20,7 @@ export function TaskDialog({
   task: Task | null;
   defaultStatus: TaskStatus;
   onSave: (draft: TaskDraft) => void;
-  onDelete?: () => void;
+  onDelete?: (() => void) | undefined;
 }) {
   const empty: TaskDraft = { title: "", description: "", category: "Design", status: defaultStatus, progress: 0, due_date: null };
   const [d, setD] = useState<TaskDraft>(empty);
@@ -57,7 +57,7 @@ export function TaskDialog({
               <span className="text-muted-foreground">Progress</span>
               <span className="font-semibold">{d.progress}%</span>
             </div>
-            <Slider value={[d.progress]} max={100} step={5} onValueChange={([v]) => setD({ ...d, progress: v })} />
+            <Slider value={[d.progress]} max={100} step={5} onValueChange={([v]) => setD({ ...d, progress: v ?? 0 })} />
           </div>
           <div className="flex items-center justify-between pt-2">
             {onDelete ? (
