@@ -206,8 +206,9 @@ function BoardPage() {
           <div className="rounded-2xl bg-violet-soft p-5">
             <div className="flex items-center gap-5">
               <ProgressRing value={avg} />
-              <div className="grid flex-1 grid-cols-2 gap-2">
+              <div className="grid flex-1 grid-cols-1 gap-2">
                 <Stat label="Total" value={total} />
+                <Stat label="To do" value={total - inProg} />
                 <Stat label="In progress" value={inProg} accent />
               </div>
             </div>
