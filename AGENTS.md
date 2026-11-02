@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Kanban data (tasks, chat_messages) is read/written from the browser via the Supabase client under per-user RLS; the AI chat streams from `src/routes/api/chat.ts`, which verifies the bearer token and uses a user-scoped client so tools stay within RLS.
